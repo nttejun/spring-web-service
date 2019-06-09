@@ -13,7 +13,7 @@
     </bean>
 
     <!-- mapper interface -->
-    <mybatis-spring:scan base-package="spring.web.mappers"/>
+    <mybatis-spring:scan base-package="spring.mappers"/>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

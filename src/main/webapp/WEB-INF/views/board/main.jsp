@@ -12,7 +12,7 @@
 </head>
 <body>
 <form method="">
-
+BOARD INTRO PAGE
 </form>
 </body>
 </html>

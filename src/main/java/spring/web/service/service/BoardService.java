@@ -1,11 +1,13 @@
 package spring.web.service.service;
 
-import spring.web.service.domain.Board;
+import org.springframework.stereotype.Component;
+import spring.web.service.vo.BoardVO;
 
 import java.util.List;
 
+@Component
 public interface BoardService {
 
-    List<Board> listAll() throws Exception;
+    List<BoardVO> listAll() throws Exception;
 
 }
