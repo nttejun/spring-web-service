@@ -1,32 +1,31 @@
 package spring.web.service.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import spring.web.service.vo.BoardVO;
 import spring.web.service.service.BoardService;
 
 import javax.inject.Inject;
-import java.util.List;
 
-@Controller
+@Controller("boardController")
 @RequestMapping("/board")
 public class BoardController {
+
+    Log log = LogFactory.getLog(BoardController.class);
 
     @Inject
     private BoardService boardService;
 
-    @GetMapping("/test")
-    public String test() throws Exception {
+    @GetMapping("/list")
+    public String mainPage(Model model) {
+        String boardListAll = boardService.getListALL();
+        log.info(" >> board list : " + boardListAll);
+        model.addAttribute("boardList", boardListAll);
         return "board/main";
     }
-
-    @GetMapping("/")
-    public String mainPage() throws Exception {
-        List<BoardVO> boardList = boardService.listAll();
-        return "board/main";
-    }
-
 
 
 }

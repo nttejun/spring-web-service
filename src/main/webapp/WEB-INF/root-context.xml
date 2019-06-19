@@ -7,18 +7,14 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="org.mariadb.jdbc.Driver"/>
-        <property name="url" value="jdbc:mariadb://localhost:3306/webservice"/>
+        <property name="url" value="jdbc:mariadb://localhost:3306/springwebservice"/>
         <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value=""/>
     </bean>
-
-    <!-- mapper interface -->
-    <mybatis-spring:scan base-package="spring.mappers"/>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="WEB-INF/root-context.xml"/>
-        <property name="mapperLocations" value="WEB-INF/mappers/boardMapper.xml"/>
+        <property name="mapperLocations" value="/WEB-INF/mappers/boardMapper.xml"/>
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">

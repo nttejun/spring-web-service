@@ -1,21 +1,19 @@
 package spring.web.service.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import spring.mappers.BoardMapper;
-import spring.web.service.vo.BoardVO;
+import spring.web.service.dao.BoardDao;
 
-import javax.inject.Inject;
-import java.util.List;
+@Repository
+public class BoardServiceImpl implements BoardService {
 
-public class BoardServiceImpl implements BoardService{
-
-    @Inject
-    private BoardMapper boardMapper;
+    @Autowired
+    BoardDao boardDao;
 
     @Transactional
     @Override
-    public List<BoardVO> listAll() throws Exception {
-        return boardMapper.listAll();
+    public String getListALL() {
+        return boardDao.getAllList().toString();
     }
-
 }
