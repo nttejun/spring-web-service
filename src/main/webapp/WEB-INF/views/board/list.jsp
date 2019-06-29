@@ -14,7 +14,9 @@
 <form method="">
     <table>
         <tr>
-            <td>${boardList}</td>
+            <c:forEach var="boardList" items="${boardList}" varStatus="status">
+                <td>${status.count} : <c:out value="${boardList}" /></td>
+            </c:forEach>
         </tr>
     </table>
 </form>
@@ -22,3 +24,5 @@
 <script type="text/javascript">
 </script>
 </html>
+
+

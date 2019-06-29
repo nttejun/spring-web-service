@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="boardXml">
+<mapper namespace="board">
     <select id="getListAll" resultType="spring.web.service.vo.BoardVO">
         select * from TBM_BOARD;
     </select>

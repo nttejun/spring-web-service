@@ -1,6 +1,11 @@
 package spring.web.service.service;
+
+import spring.web.service.vo.BoardVO;
+
+import java.util.List;
+
 public interface BoardService {
 
-    String getListALL();
+    List<BoardVO> getListALL();
 
 }

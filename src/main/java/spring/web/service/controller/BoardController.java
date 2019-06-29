@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import spring.web.service.service.BoardService;
+import spring.web.service.vo.BoardVO;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @Controller("boardController")
 @RequestMapping("/board")
@@ -21,10 +23,10 @@ public class BoardController {
 
     @GetMapping("/list")
     public String mainPage(Model model) {
-        String boardListAll = boardService.getListALL();
+        List<BoardVO> boardListAll = boardService.getListALL();
         log.info(" >> board list : " + boardListAll);
         model.addAttribute("boardList", boardListAll);
-        return "board/main";
+        return "board/list";
     }
 
 
