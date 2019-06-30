@@ -12,12 +12,13 @@
 </head>
 <body>
 <form method="">
-    <table>
+    <h3>${boardListr}</h3>
+    <table border="1px solid;">
+            <c:forEach var="board" items="${boardList}" varStatus="status">
         <tr>
-            <c:forEach var="boardList" items="${boardList}" varStatus="status">
-                <td>${status.count} : <c:out value="${boardList}" /></td>
-            </c:forEach>
+            <td>${status.count}</td><td>${board.title}</td>
         </tr>
+            </c:forEach>
     </table>
 </form>
 </body>

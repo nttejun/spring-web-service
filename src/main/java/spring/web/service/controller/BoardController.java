@@ -24,6 +24,7 @@ public class BoardController {
     @GetMapping("/list")
     public String mainPage(Model model) {
         List<BoardVO> boardListAll = boardService.getListALL();
+        System.out.println(" >> board list : " + boardListAll);
         log.info(" >> board list : " + boardListAll);
         model.addAttribute("boardList", boardListAll);
         return "board/list";
