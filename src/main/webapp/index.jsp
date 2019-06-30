@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+
+  메인 페이지
+  
   </body>
 </html>
