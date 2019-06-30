@@ -11,18 +11,30 @@
     <title>Title</title>
 </head>
 <body>
-<form method="">
-    <h3>${boardListr}</h3>
+<form method="get" action="/board/">
     <table border="1px solid;">
-            <c:forEach var="board" items="${boardList}" varStatus="status">
-        <tr>
-            <td>${status.count}</td><td>${board.title}</td>
-        </tr>
-            </c:forEach>
+        <c:forEach var="board" items="${boardList}" varStatus="status">
+            <tr>
+                <td>${status.count}</td>
+                <td>${board.title}</td>
+            </tr>
+        </c:forEach>
     </table>
 </form>
+<div>
+    <button id="btnAddBoard">Add Board</button>
+</div>
+<form method="get" id="fmAddBoard" action="/board/modal"></form>
 </body>
 <script type="text/javascript">
+
+    var fmAddBoard = function (ev) {
+        document.getElementById("fmAddBoard").submit();
+    };
+
+    var btnAddBoard = document.querySelector('#btnAddBoard');
+    btnAddBoard.addEventListener('click', fmAddBoard);
+
 </script>
 </html>
 

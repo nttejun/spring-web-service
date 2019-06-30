@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface BoardService {
 
-    List<BoardVO> getListALL();
-
+    List<BoardVO> getBoardlist();
+    String putBoard(BoardVO vo);
 }

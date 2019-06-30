@@ -13,8 +13,12 @@ public class BoardDao {
     @Autowired
     SqlSession session;
 
-    public List<BoardVO> getListAll() {
-        List<BoardVO> boardList = session.selectList("board.getListAll");
+    public List<BoardVO> getBoardlist() {
+        List<BoardVO> boardList = session.selectList("board.getBoardlist");
         return boardList;
+    }
+
+    public int putBoard(BoardVO vo){
+        return session.insert("board.putBoard", vo);
     }
 }
