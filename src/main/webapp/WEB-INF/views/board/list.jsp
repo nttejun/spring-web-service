@@ -24,7 +24,7 @@
 <div>
     <button id="btnAddBoard">Add Board</button>
 </div>
-<form method="get" id="fmAddBoard" action="/board/modal"></form>
+<form method="get" id="fmAddBoard" action="/board/post"></form>
 </body>
 <script type="text/javascript">
 
