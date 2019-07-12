@@ -21,4 +21,9 @@ public class BoardDao {
     public int putBoard(BoardVO vo){
         return session.insert("board.putBoard", vo);
     }
+
+    public BoardVO getContentsInfo(String eid) {
+        BoardVO contents = session.selectOne("board.getContentsInfo", eid);
+        return contents;
+    }
 }

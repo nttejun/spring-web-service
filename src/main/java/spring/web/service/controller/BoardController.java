@@ -24,15 +24,29 @@ public class BoardController {
     private BoardService boardService;
 
     @GetMapping("/")
-    public String listBoard(Model model) {
+    public String getListBoard(Model model) {
         List<BoardVO> boardListAll = boardService.getBoardlist();
-        System.out.println(" >> board list : " + boardListAll);
+        System.out.println(" >> BOARD LIST : " + boardListAll);
         model.addAttribute("boardList", boardListAll);
         return "board/list";
     }
 
+    @GetMapping("/post")
+    public String addBoardPage(){
+        return "board/post";
+    }
+
+    @GetMapping(value="/post/{eid}")
+    public String getBoardDetail(@PathVariable String eid, Model model){
+        System.out.println(">> EID : " + eid);
+        BoardVO contentsInfo = boardService.getContentsInfo(eid);
+        model.addAttribute("contentsInfo", contentsInfo);
+        System.out.println(">> CONTENTS DETAIL INFO : " + contentsInfo.toString());
+        return "board/detail";
+    }
+
     @ResponseBody
-    @PostMapping("/")
+    @PostMapping("/post")
     public ModelAndView addBoardAction(ModelAndView mv, HttpServletRequest request)
     {
         SimpleDateFormat dateFm = new SimpleDateFormat ( "yyyyMMddHHmmss");
@@ -51,12 +65,8 @@ public class BoardController {
         System.out.println(" >> RESULT MSG : " + result);
         mv.addObject("redirectUrl", "/board/");
         mv.setViewName("common/redirect");
-        return mv;
-    }
 
-    @GetMapping("/post")
-    public String addBoard(){
-        return "board/post";
+        return mv;
     }
 }
 

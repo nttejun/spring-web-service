@@ -11,19 +11,20 @@
     <title>Title</title>
 </head>
 <body>
-<form method="get" action="/board/">
-    <table border="1px solid;">
-        <c:forEach var="board" items="${boardList}" varStatus="status">
-            <tr>
-                <td>${status.count}</td>
-                <td>${board.title}</td>
-            </tr>
-        </c:forEach>
-    </table>
-</form>
+
+<table border="1px solid;">
+    <c:forEach var="board" items="${boardList}" varStatus="status">
+        <tr onclick="location.href='/board/post/${board.eid}'">
+            <td>${status.count}</td>
+            <td>${board.title}</td>
+        </tr>
+    </c:forEach>
+</table>
+
 <div>
     <button id="btnAddBoard">Add Board</button>
 </div>
+
 <form method="get" id="fmAddBoard" action="/board/post"></form>
 </body>
 <script type="text/javascript">

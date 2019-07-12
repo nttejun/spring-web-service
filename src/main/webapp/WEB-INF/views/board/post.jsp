@@ -11,7 +11,7 @@
     <title>게시물 생성</title>
 </head>
 <body>
-<form id="fmAddBoard" method="post" action="/board/">
+<form id="fmAddBoard" method="post" action="/board/post">
     <table>
         <tr>
             <td>

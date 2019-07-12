@@ -8,6 +8,10 @@
         select * from TBM_BOARD;
     </select>
 
+    <select id="getContentsInfo" resultType="spring.web.service.vo.BoardVO">
+        SELECT * FROM TBM_BOARD WHERE eid = #{eid};
+    </select>
+
     <insert id="putBoard" parameterType="spring.web.service.vo.BoardVO">
         INSERT INTO TBM_BOARD (eid, category, title, contents, reg_user, reg_dttm, upt_user, upt_dttm)
         VALUES (#{eid}, #{category}, #{title}, #{contents}, #{regUser}, DEFAULT , '', DEFAULT );

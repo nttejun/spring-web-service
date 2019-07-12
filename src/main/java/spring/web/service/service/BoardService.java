@@ -8,4 +8,6 @@ public interface BoardService {
 
     List<BoardVO> getBoardlist();
     String putBoard(BoardVO vo);
+
+    BoardVO getContentsInfo(String eid);
 }
