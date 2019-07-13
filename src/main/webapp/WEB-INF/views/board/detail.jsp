@@ -34,9 +34,16 @@
         <td>${contentsInfo.regDttm}</td>
     </tr>
 </table>
-<input type="button" id="updateContentsBtn" value="변경">
-<input type="button" id="reqUpdateContentsBtn" value="수정하기">
+<input type="button" id="reqUpdateContentsBtn" value="변경">
 <input type="button" id="deleteContentsBtn" value="삭제">
+<input type="button" id="updateContentsBtn" value="수정하기">
+
+<form name="updateContentsFm" action="/board/postUpdate" method="POST">
+    <input type="hidden" name="eid" value="${contentsInfo.eid}">
+</form>
+<form name="deleteContentsFm" action="/board/postDelete" method="POST">
+    <input type="hidden" name="eid" value="${contentsInfo.eid}">
+</form>
 </body>
 <script type="text/javascript">
 
@@ -58,25 +65,26 @@
     }
 
     // 수정안내
-    function updateContentsFunc() {
+    function reqUpdateContentsFunc() {
+        document.updateContentsFm.submit();
     }
 
     // 수정요청
-    function reqUpdateContentsFunc() {
-        post("${eid}", "/board/post", "put");
+    function updateContentsFunc() {
+        document.deleteContentsFm.submit();
     }
 
     // 삭제요청
     function deleteContentsFunc() {
-        post("${eid}", "/board/post", "delete");
+        document.deleteContentsFm.submit();
     }
 
-    const updateContentsBtn = document.getElementById("updateContentsBtn");
     const reqUpdateContentsBtn = document.getElementById("reqUpdateContentsBtn");
+    const updateContentsBtn = document.getElementById("updateContentsBtn");
     const deleteContentsBtn = document.getElementById("deleteContentsBtn");
 
-    updateContentsBtn.addEventListener("click", function(event){updateContentsFunc()});
     reqUpdateContentsBtn.addEventListener("click", function(event){reqUpdateContentsFunc()});
+    updateContentsBtn.addEventListener("click", function(event){updateContentsFunc()});
     deleteContentsBtn.addEventListener("click", function(event){ deleteContentsFunc()});
 
 

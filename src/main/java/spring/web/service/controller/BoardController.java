@@ -68,5 +68,19 @@ public class BoardController {
 
         return mv;
     }
+
+    @PostMapping("postUpdate")
+    public String postUpdate(@RequestParam(value = "eid") String pEid){
+        System.out.println(">> REQUEST UPDATE EID : " + pEid);
+        return "board/post/"+pEid;
+    }
+
+    @PostMapping("/postDelete")
+    public ModelAndView deleteContents(@RequestParam(value = "eid") String pEid, ModelAndView mv){
+        System.out.println(">> REQUEST DELETE EID : " + pEid);
+        mv.addObject("redirectUrl", "/board/");
+        mv.setViewName("common/redirect");
+        return mv;
+    }
 }
 
