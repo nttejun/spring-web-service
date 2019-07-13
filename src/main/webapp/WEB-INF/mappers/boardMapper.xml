@@ -12,8 +12,18 @@
         SELECT * FROM TBM_BOARD WHERE eid = #{eid};
     </select>
 
-    <insert id="putBoard" parameterType="spring.web.service.vo.BoardVO">
+    <insert id="addPost" parameterType="spring.web.service.vo.BoardVO">
         INSERT INTO TBM_BOARD (eid, category, title, contents, reg_user, reg_dttm, upt_user, upt_dttm)
-        VALUES (#{eid}, #{category}, #{title}, #{contents}, #{regUser}, DEFAULT , '', DEFAULT );
+        VALUES (#{eid}, #{category}, #{title}, #{contents}, #{reg_user}, DEFAULT , '', DEFAULT );
     </insert>
+
+    <update id="updatePost" parameterType="spring.web.service.vo.BoardVO">
+        UPDATE TBM_BOARD
+        SET category = #{category}, title = #{title}, contents = #{contents}, upt_user = #{upt_user}
+        WHERE eid = #{eid};
+    </update>
+
+    <delete id="deletePost">
+        DELETE FROM TBM_BOARD WHERE eid = #{eid};
+    </delete>
 </mapper>

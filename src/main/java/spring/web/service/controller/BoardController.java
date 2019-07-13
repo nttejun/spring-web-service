@@ -47,8 +47,9 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/post")
-    public ModelAndView addBoardAction(ModelAndView mv, HttpServletRequest request)
+    public ModelAndView addPostAction(ModelAndView mv, HttpServletRequest request)
     {
+        System.out.println(" >> REQUEST ADD POST");
         SimpleDateFormat dateFm = new SimpleDateFormat ( "yyyyMMddHHmmss");
         String date = dateFm.format (System.currentTimeMillis());
 
@@ -56,12 +57,12 @@ public class BoardController {
         vo.setCategory(request.getParameter("category"));
         vo.setTitle(request.getParameter("title"));
         vo.setContents(request.getParameter("contents"));
-        vo.setRegUser(request.getParameter("regUser"));
+        vo.setReg_user(request.getParameter("regUser"));
         vo.setEid(date);
 
-        System.out.println(" >> board VO : " + vo.toString());
+        System.out.println(" >> BOARD VO : " + vo.toString());
 
-        String result = boardService.putBoard(vo);
+        String result = boardService.addPost(vo);
         System.out.println(" >> RESULT MSG : " + result);
         mv.addObject("redirectUrl", "/board/");
         mv.setViewName("common/redirect");
@@ -69,15 +70,35 @@ public class BoardController {
         return mv;
     }
 
-    @PostMapping("postUpdate")
-    public String postUpdate(@RequestParam(value = "eid") String pEid){
-        System.out.println(">> REQUEST UPDATE EID : " + pEid);
-        return "board/post/"+pEid;
+    @PostMapping("/postUpdate")
+    public ModelAndView updateContents(
+            @RequestParam(value = "eid") String pEid,
+            @RequestParam(value = "category") String pCategory,
+            @RequestParam(value = "title") String pTitle,
+            @RequestParam(value = "contents") String pContents,
+            @RequestParam(value = "uptUser") String pUptUser,
+            ModelAndView mv
+    ){
+        System.out.println(" >> REQUEST UPDATE EID : " + pEid);
+
+        BoardVO vo = new BoardVO();
+        vo.setEid(pEid);
+        vo.setCategory(pCategory);
+        vo.setTitle(pTitle);
+        vo.setContents(pContents);
+        vo.setUpt_user(pUptUser);
+
+        boardService.updatePost(vo);
+        mv.addObject("redirectUrl", "/board/");
+        mv.setViewName("common/redirect");
+        return mv;
     }
 
     @PostMapping("/postDelete")
     public ModelAndView deleteContents(@RequestParam(value = "eid") String pEid, ModelAndView mv){
-        System.out.println(">> REQUEST DELETE EID : " + pEid);
+        System.out.println(" >> REQUEST DELETE EID : " + pEid);
+
+        boardService.deletePost(pEid);
         mv.addObject("redirectUrl", "/board/");
         mv.setViewName("common/redirect");
         return mv;

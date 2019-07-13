@@ -23,24 +23,56 @@ public class BoardServiceImpl implements BoardService, BoardConstatns {
 
     @Transactional
     @Override
-    public String putBoard(BoardVO vo) {
+    public String addPost(BoardVO vo) {
 
-
-        int result = boardDao.putBoard(vo);
+        int result = boardDao.addPost(vo);
 
         String resultCode = "";
-        if (result == 1) { resultCode = BOARD_SUCCESS_CODE; }
-        else { resultCode = BOARD_FAIL_CODE; }
+        if (result == 1) {
+            resultCode = BOARD_SUCCESS_CODE;
+        } else {
+            resultCode = BOARD_FAIL_CODE;
+        }
 
         return resultCode;
     }
 
     @Override
-    public BoardVO getContentsInfo(String eid){
+    public BoardVO getContentsInfo(String eid) {
 
         BoardVO boardDetailInfo = boardDao.getContentsInfo(eid);
 
         return boardDetailInfo;
 
+    }
+
+    @Transactional
+    @Override
+    public String updatePost(BoardVO vo) {
+
+        int result = boardDao.updatePost(vo);
+
+        String resultCode = "";
+        if (result == 1) {
+            resultCode = BOARD_SUCCESS_CODE;
+        } else {
+            resultCode = BOARD_FAIL_CODE;
+        }
+        return resultCode;
+    }
+
+    @Transactional
+    @Override
+    public String deletePost(String eid) {
+
+        int result = boardDao.deletePost(eid);
+
+        String resultCode = "";
+        if (result == 1) {
+            resultCode = BOARD_SUCCESS_CODE;
+        } else {
+            resultCode = BOARD_FAIL_CODE;
+        }
+        return resultCode;
     }
 }

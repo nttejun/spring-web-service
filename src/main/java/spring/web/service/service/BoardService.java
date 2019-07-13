@@ -7,7 +7,12 @@ import java.util.List;
 public interface BoardService {
 
     List<BoardVO> getBoardlist();
-    String putBoard(BoardVO vo);
+
+    String addPost(BoardVO vo);
 
     BoardVO getContentsInfo(String eid);
+
+    String updatePost(BoardVO vo);
+
+    String deletePost(String eid);
 }

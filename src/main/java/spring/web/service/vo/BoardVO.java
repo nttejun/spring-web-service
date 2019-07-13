@@ -5,10 +5,10 @@ public class BoardVO {
     private String category;
     private String title;
     private String contents;
-    private String regUser;
-    private String regDttm;
-    private String uptUser;
-    private String uptDttm;
+    private String reg_user;
+    private String reg_dttm;
+    private String upt_user;
+    private String upt_dttm;
 
     public String getEid() {
         return eid;
@@ -42,36 +42,36 @@ public class BoardVO {
         this.contents = contents;
     }
 
-    public String getRegUser() {
-        return regUser;
+    public String getReg_user() {
+        return reg_user;
     }
 
-    public void setRegUser(String regUser) {
-        this.regUser = regUser;
+    public void setReg_user(String regUser) {
+        this.reg_user = regUser;
     }
 
-    public String getRegDttm() {
-        return regDttm;
+    public String getReg_dttm() {
+        return reg_dttm;
     }
 
-    public void setRegDttm(String regDttm) {
-        this.regDttm = regDttm;
+    public void setReg_dttmsetRegDttm(String regDttm) {
+        this.reg_dttm = regDttm;
     }
 
-    public String getUptUser() {
-        return uptUser;
+    public String getUpt_user() {
+        return upt_user;
     }
 
-    public void setUptUser(String uptUser) {
-        this.uptUser = uptUser;
+    public void setUpt_user(String uptUser) {
+        this.upt_user = uptUser;
     }
 
-    public String getUptDttm() {
-        return uptDttm;
+    public String getUpt_dttm() {
+        return upt_dttm;
     }
 
-    public void setUptDttm(String uptDttm) {
-        this.uptDttm = uptDttm;
+    public void setUpt_dttm(String uptDttm) {
+        this.upt_dttm = uptDttm;
     }
 
     @Override
@@ -80,9 +80,9 @@ public class BoardVO {
                 + ",category:" + category
                 + ",title:" + title
                 + ",contents:" + contents
-                + ",regUser:" + regUser
-                + ",regDttm:" + regDttm
-                + ",uptUser:" + uptUser
-                + ",uptDttm:" + uptDttm;
+                + ",regUser:" + reg_user
+                + ",regDttm:" + reg_dttm
+                + ",uptUser:" + upt_user
+                + ",uptDttm:" + upt_dttm;
     }
 }

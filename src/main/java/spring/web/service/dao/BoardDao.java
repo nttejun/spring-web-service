@@ -18,12 +18,24 @@ public class BoardDao {
         return boardList;
     }
 
-    public int putBoard(BoardVO vo){
-        return session.insert("board.putBoard", vo);
+    public int addPost(BoardVO vo){
+        return session.insert("board.addPost", vo);
     }
 
     public BoardVO getContentsInfo(String eid) {
         BoardVO contents = session.selectOne("board.getContentsInfo", eid);
+        System.out.println(">> BOARD VO " + contents);
+        System.out.println(">> BOARD VO " + contents.toString());
         return contents;
+    }
+
+    public int updatePost(BoardVO vo) {
+        int result = session.update("board.updatePost", vo);
+        return result;
+    }
+
+    public int deletePost(String eid) {
+        int result = session.delete("board.deletePost", eid);
+        return result;
     }
 }
